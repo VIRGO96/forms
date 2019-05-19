@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC >
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="language" content="english"> 
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+
+<title>random background-image rotation</title>
+
+<style type="text/css">
+body {
+    background-image:url(pic2.jpg);
+	}
+</style>
+
+<script type="text/javascript">
+
+   var num;
+   var temp=0;
+   var speed=5000; /* this is set for 5 seconds, edit value to suit requirements */
+   var preloads=[];
+
+/* add any number of images here */
+
+preload(
+        'pic.jpg',
+        'pic2.jpg',
+		
+        'pic3.jpg',
+        'pic4.jpg'
+       );
+
+function preload(){
+
+for(var c=0;c<arguments.length;c++) {
+   preloads[preloads.length]=new Image();
+   preloads[preloads.length-1].src=arguments[c];
+  }
+ }
+
+function rotateImages() {
+   num=Math.floor(Math.random()*preloads.length);
+if(num==temp){
+   rotateImages();
+ }
+else{
+   document.body.style.backgroundImage='url('+preloads[num].src+')';
+   temp=num;
+
+setTimeout(function(){rotateImages()},speed);
+  }
+ }
+
+if(window.addEventListener){
+   window.addEventListener('load',function(){setTimeout(function(){rotateImages()},speed)},false);
+ }
+else { 
+if(window.attachEvent){
+   window.attachEvent('onload',function(){setTimeout(function(){rotateImages()},speed)});
+  }
+ }
+</script>
+
+</head>
+<body>
+
+<div>
+</div>
+
+</body>
+</html>

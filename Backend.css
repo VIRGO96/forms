@@ -1,0 +1,29 @@
+
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+
+img#g 
+{
+	position :absolute;
+	top:8px;
+	left: 20px;
+width: 200px;
+height: 80px;
+}
+
+body {
+    background-image:url(pic.jpg);
+	background-size:1600px 750px;
+	}
+	
+	label {
+color: #ffffff; 
+}
+
+th, td {
+    padding: 35px;
+}
